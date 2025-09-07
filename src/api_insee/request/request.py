@@ -154,7 +154,7 @@ class RequestService(object):
     def header(self):
         return {
             'Accept' : self._accept_format,
-            'Authorization' : 'Bearer %s' % (self.token.access_token)
+            'X-INSEE-Api-Key-Integration' : self.token,
         }
 
     @property
@@ -177,7 +177,7 @@ class RequestService(object):
             raise RequestExeption(self).badRequest()
 
         elif error.code == 401:
-            raise AuthExeption(self.credentials).unauthorized(error.reason)
+            raise AuthExeption(self.token).unauthorized(error.reason)
 
         else:
             raise error

@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-import conftest as conf
 
-from api_insee import ApiInsee
 from api_insee.conf import API_VERSION
 import api_insee.criteria as Criteria
 

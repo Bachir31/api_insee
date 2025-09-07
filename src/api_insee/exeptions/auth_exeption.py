@@ -2,24 +2,18 @@
 
 class AuthExeption(Exception):
 
-    credential = None
+    token: str = None
 
-    def __init__(self, credential):
-        self.credential = credential
+    def __init__(self, token):
+        self.token = token
 
     def invalidkeyAndSecret(self):
-        self.message = "Invalid consumer key or secret. key : %s secret : %s" % (
-            self.credential.key,
-            self.credential.secret
-        )
+        self.message = "Invalid consumer key or secret. token : %s" % self.token
 
         return self
 
     def unauthorized(self, reason=False):
-        self.message = "Api connection unauthorized. key : %s secret : %s" % (
-            self.credential.key,
-            self.credential.secret
-        )
+        self.message = "Api connection unauthorized. token : %s" % self.token
 
         if reason:
             self.message += "\n %s" % (reason)

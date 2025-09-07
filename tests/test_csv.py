@@ -26,8 +26,7 @@ def test_request_format_fallback_is_json(api, execute_request):
 def test_request_format_fallback_is_csv(api, execute_request):
 
     api_csv = ApiInsee(
-        key = conf.SIRENE_API_CONSUMER_KEY,
-        secret = conf.SIRENE_API_CONSUMER_SECRET,
+        token=conf.SIRENE_API_TOKEN,
         format = 'csv'
     )
 

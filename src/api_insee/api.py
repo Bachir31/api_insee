@@ -6,15 +6,12 @@ from api_insee.utils.auth_service import AuthService, MockAuth
 
 class ApiInsee():
 
-    def __init__(self, key, secret, format='json', noauth=False):
+    def __init__(self, token: str, format='json', noauth=False):
 
         if noauth:
             self.auth = MockAuth()
         else:
-            self.auth = AuthService(
-                key = key,
-                secret = secret
-            )
+            self.auth = AuthService(token=token)
         self.format = format
 
         self.use('siren', RequestEntrepriseServiceSiren)

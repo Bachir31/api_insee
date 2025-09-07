@@ -23,9 +23,7 @@ spec.loader.exec_module(module)
 #  Replace API consumer data with yours
 #
 
-SIRENE_API_CONSUMER_KEY    = "your-key"
-SIRENE_API_CONSUMER_SECRET = "your-secret"
-SIRENE_API_TOKEN           = "your-token"
+SIRENE_API_TOKEN = "your-token"
 
 
 def pytest_addoption(parser):
@@ -44,3 +42,10 @@ def execute_request(request):
             api_request.get()
 
     return exec
+
+from api_insee import ApiInsee
+
+@pytest.fixture
+def api():
+    api = ApiInsee(token=SIRENE_API_TOKEN)
+    return api
